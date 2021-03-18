@@ -39,13 +39,33 @@
 		</dependency>
 	</dependencies>
 
+
+
 	<build>
 		<plugins>
+		
+		<plugin>
+			<groupId>com.google.cloud.tools</groupId>
+			<artifactId>jib-maven-plugin</artifactId>
+			<version>2.2.0</version>
+			  <configuration>
+                    <to>
+                        <image>${amadou1204}/ci-cd-application-process</image>
+                        <tags>
+                            <tag>${project.version}</tag>
+                            <tag>latest</tag>
+                        </tags>
+                    </to>
+                </configuration>
+                
+		</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
+	
+	
 
 </project>
