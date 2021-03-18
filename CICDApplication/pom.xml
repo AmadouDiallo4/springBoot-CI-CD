@@ -45,17 +45,20 @@
 		<plugins>
 		
 		<plugin>
-			<groupId>com.google.cloud.tools</groupId>
-			<artifactId>jib-maven-plugin</artifactId>
-			<version>2.2.0</version>
+			<groupId>com.spotify</groupId>
+			<artifactId>docker-maven-plugin</artifactId>
+			<version>0.4.5</version>
 			  <configuration>
-                    <to>
-                        <image>${amadou1204}/ci-cd-application-process</image>
-                        <tags>
-                            <tag>${project.version}</tag>
-                            <tag>latest</tag>
-                        </tags>
-                    </to>
+                    <imageName>springdocker</imageName>
+                    <baseImage>java</baseImage>
+                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                    <resources>
+                    	<resource>
+                    		<targetPath>/</targetPath>
+                    		<directory>${project.build.directory}</directory>
+                    		<include>${project.build.finalName}.jar</include>
+                    	</resource>
+                    </resources>
                 </configuration>
                 
 		</plugin>
